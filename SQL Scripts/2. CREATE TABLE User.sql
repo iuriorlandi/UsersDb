@@ -7,13 +7,14 @@ IF NOT EXISTS(
 		[sysobjects].[id] 
 	FROM sysobjects
 	WHERE type = 'U' 
-		AND name = 'User'
+		AND name = 'user'
 )
-	CREATE TABLE [User](
+	CREATE TABLE [user](
 		[id] INT IDENTITY(1,1),
 		[login] VARCHAR(50) UNIQUE NOT NULL,
 		[register_date] DATE DEFAULT(CONVERT(DATE, GETDATE())),
-		CONSTRAINT [PK_User] PRIMARY KEY([id])
+		CONSTRAINT [PK_user] 
+			PRIMARY KEY([id])
 	);
 ELSE
 	PRINT 'Table already exists'
